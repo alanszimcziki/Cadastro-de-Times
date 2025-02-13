@@ -16,6 +16,6 @@ public class TitulosModel {
 
     @ManyToOne
     @JoinColumn(name="times_id") //todo:foreing key chave estrangeira
-    private List<TimesModel> times;
+    private TimesModel times;
 
 }

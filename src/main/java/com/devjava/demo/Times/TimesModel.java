@@ -18,7 +18,7 @@ public class TimesModel {
     private String liga;
     private int capacidade;
     @OneToMany(mappedBy = "times")
-    private TitulosModel titulos;
+    private List<TitulosModel> titulos;
 
     public TimesModel() {
     }
