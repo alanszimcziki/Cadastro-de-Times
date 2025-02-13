@@ -1,10 +1,13 @@
-package com.devjava.demo;
+package com.devjava.demo.Times;
 
+import com.devjava.demo.Titulos.TitulosModel;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "tb_cadastro")
-public class TimeModel {
+@Table(name = "tb_time")
+public class TimesModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,11 +17,13 @@ public class TimeModel {
     private String pais;
     private String liga;
     private int capacidade;
+    @OneToMany(mappedBy = "times")
+    private TitulosModel titulos;
 
-    public TimeModel() {
+    public TimesModel() {
     }
 
-    public TimeModel(long id, String nome, String email, String pais, String liga, int capacidade) {
+    public TimesModel(long id, String nome, String email, String pais, String liga, int capacidade) {
         this.id = id;
         this.nome = nome;
         this.email = email;
