@@ -19,7 +19,10 @@ public class TimesModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
+
+    @Column(unique = true)
     private String email;
+
     private String pais;
     private String liga;
     private int capacidade;

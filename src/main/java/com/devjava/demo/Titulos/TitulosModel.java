@@ -24,4 +24,6 @@ public class TitulosModel {
     @JoinColumn(name="times_id") //todo:foreing key chave estrangeira
     private TimesModel times;
 
+    
+
 }
