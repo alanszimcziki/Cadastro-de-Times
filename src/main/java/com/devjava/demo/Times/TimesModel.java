@@ -17,15 +17,27 @@ public class TimesModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
+
+    @Column(name = "nome")
     private String nome;
 
     @Column(unique = true)
     private String email;
 
+    @Column(name = "imagem")
+    private String img_url;
+
+    @Column(name = "pais")
     private String pais;
+
+    @Column(name = "campeonato")
     private String liga;
+
+    @Column(name = "Capacidade_estadio")
     private int capacidade;
+
     @OneToMany(mappedBy = "times")
     private List<TitulosModel> titulos;
 

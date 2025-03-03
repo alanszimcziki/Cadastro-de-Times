@@ -11,6 +11,8 @@ public class CadastroDeTimesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CadastroDeTimesApplication.class, args);
 
+
+
 	}
 
 }
