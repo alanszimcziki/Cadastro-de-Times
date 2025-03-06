@@ -3,13 +3,21 @@ package com.devjava.demo.Titulos;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("titulos")
 public class TitulosController {
 
+    private TitulosService titulosService;
+
+    public TitulosController(TitulosService titulosService) {
+        this.titulosService = titulosService;
+    }
+
     @GetMapping("/listar")
-    public String listarTitulo(){
-        return "Lista todos os titulos";
+    public List<TitulosModel> listarTodosTitulos(){
+        return titulosService.listarTodosTitulos();
     }
     @PostMapping("/criar")
     public String criarTitulo(){
