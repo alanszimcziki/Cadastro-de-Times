@@ -24,8 +24,8 @@ public class TitulosController {
         return titulosService.listarPorId(id);
     }
     @PostMapping("/criar")
-    public String criarTitulo(){
-        return "Cria um novo título";
+    public TitulosModel criarTitulo(@RequestBody TitulosModel titulo){
+        return titulosService.criarTitulo(titulo);
     }
     @PutMapping("/alterar")
     public String alteraTitulo(){

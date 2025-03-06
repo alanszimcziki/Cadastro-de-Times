@@ -23,5 +23,9 @@ public class TitulosService {
         return ninjaPorId.orElse(null);
     }
 
+    public TitulosModel criarTitulo(TitulosModel titulos){
+        return titulosRepository.save(titulos);
+    }
+
 
 }
