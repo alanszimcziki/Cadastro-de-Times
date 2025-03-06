@@ -3,7 +3,7 @@ package com.devjava.demo.Times;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("times")
 public class Controller {
 
     //TODO: -> CAMINHO DA ROTA
@@ -12,20 +12,20 @@ public class Controller {
         return "Listar todos os times";
     }
     //todo: listar os times pelo id
-    @GetMapping("/listarTimes")
+    @GetMapping("/listar")
     public String listarTimesPeloId(){
         return "Times listado por ID";
     }
     //todo:criar novo time
-    @PostMapping("/criarTime")
+    @PostMapping("/criar")
     public String criarNovoTime(){
         return "Time Criado";
     }
-    @PutMapping("/alterarTime")
+    @PutMapping("/alterar")
     public String alterarTimePorId(){
         return "Time Alterado";
     }
-    @DeleteMapping("/deletarTime")
+    @DeleteMapping("/deletar")
     public String deletarTimePorId(){
         return "Time Deletado";
     }
