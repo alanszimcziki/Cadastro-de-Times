@@ -1,8 +1,10 @@
 package com.devjava.demo.Times;
 
+import com.devjava.demo.Titulos.TitulosModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TimesService {
@@ -15,4 +17,9 @@ public class TimesService {
     public List<TimesModel> listarTodosTimes(){
         return timesRepository.findAll();
     }
+    public TimesModel listarTimesPorId(Long id){
+        Optional<TimesModel> timeId = timesRepository.findById(id);
+        return timeId.orElse(null);
+    }
+
 }

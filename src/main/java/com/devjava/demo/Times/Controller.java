@@ -20,10 +20,13 @@ public class Controller {
         return timeService.listarTodosTimes();
     }
     //todo: listar os times pelo id
-    @GetMapping("/listar")
-    public String listarTimesPeloId(){
-        return "Times listado por ID";
+    @GetMapping("/listar/{id}")
+    public TimesModel listarTimesPorId(@PathVariable Long id){
+        return timeService.listarTimesPorId(id);
     }
+
+
+
     //todo:criar novo time
     @PostMapping("/criar")
     public String criarNovoTime(){
