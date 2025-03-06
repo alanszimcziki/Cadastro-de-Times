@@ -1,6 +1,7 @@
 package com.devjava.demo.Titulos;
 
 import com.devjava.demo.Times.TimesModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class TitulosModel {
 
     @ManyToOne
     @JoinColumn(name="times_id") //todo:foreing key chave estrangeira
+    @JsonIgnore
     private TimesModel times;
 
     
