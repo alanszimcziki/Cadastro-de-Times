@@ -24,7 +24,6 @@ public class Controller {
     public TimesModel listarTimesPorId(@PathVariable Long id){
         return timeService.listarTimesPorId(id);
     }
-
     //todo:criar novo time
     @PostMapping("/criar")
     public TimesModel criarNovoTime(@RequestBody TimesModel time){
@@ -34,9 +33,9 @@ public class Controller {
     public String alterarTimePorId(){
         return "Time Alterado";
     }
-    @DeleteMapping("/deletar")
-    public String deletarTimePorId(){
-        return "Time Deletado";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarTime(@PathVariable Long id){
+        timeService.deletarTime(id);
     }
 
 

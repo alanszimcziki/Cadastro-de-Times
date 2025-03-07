@@ -13,7 +13,6 @@ public class TimesService {
     public TimesService(TimesRepository timesRepository) {
         this.timesRepository = timesRepository;
     }
-
     public List<TimesModel> listarTodosTimes(){
         return timesRepository.findAll();
     }
@@ -23,6 +22,9 @@ public class TimesService {
     }
     public TimesModel criarNovoTime(TimesModel times){
         return timesRepository.save(times);
+    }
+    public void deletarTime(Long id){
+        timesRepository.deleteById(id);
     }
 
 }
