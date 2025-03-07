@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TimesService {
@@ -15,12 +16,15 @@ public class TimesService {
         this.timeMapper = timeMapper;
     }
 
-    public List<TimesModel> listarTodosTimes(){
-        return timesRepository.findAll();
+    public List<TimeDTO> listarTodosTimes(){
+        List<TimesModel> times = timesRepository.findAll();
+        return times.stream()
+                .map(timeMapper :: map).
+                collect(Collectors.toList());
     }
-    public TimesModel listarTimesPorId(Long id){
+    public TimeDTO listarTimesPorId(Long id){
         Optional<TimesModel> timeId = timesRepository.findById(id);
-        return timeId.orElse(null);
+        return timeId.map(timeMapper ::map).orElse(null);
     }
     public TimeDTO criarNovoTime(TimeDTO timesDto){
         TimesModel time = timeMapper.map(timesDto);
@@ -30,12 +34,16 @@ public class TimesService {
     public void deletarTime(Long id){
         timesRepository.deleteById(id);
     }
-    public TimesModel atualizaTimes(Long id, TimesModel time){
-        if(timesRepository.existsById(id)){
-            time.setId(id);
-            return timesRepository.save(time);
+    public TimeDTO atualizaTimes(Long id, TimeDTO time){
+        Optional<TimesModel> timeExistente= timesRepository.findById(id);
+        if(timeExistente.isPresent()){
+            TimesModel timeAtualizado = timeMapper.map(time);
+            timeAtualizado.setId(id);
+            TimesModel timeSalvo = timesRepository.save(timeAtualizado);
+            return timeMapper.map(timeSalvo);
         }
         return null;
+
     }
 
 }
