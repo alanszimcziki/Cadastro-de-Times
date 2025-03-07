@@ -26,5 +26,12 @@ public class TimesService {
     public void deletarTime(Long id){
         timesRepository.deleteById(id);
     }
+    public TimesModel atualizaTimes(Long id, TimesModel time){
+        if(timesRepository.existsById(id)){
+            time.setId(id);
+            return timesRepository.save(time);
+        }
+        return null;
+    }
 
 }

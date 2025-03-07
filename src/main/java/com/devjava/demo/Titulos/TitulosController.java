@@ -27,9 +27,9 @@ public class TitulosController {
     public TitulosModel criarTitulo(@RequestBody TitulosModel titulo){
         return titulosService.criarTitulo(titulo);
     }
-    @PutMapping("/alterar")
-    public String alteraTitulo(){
-        return "Vai alterar um título";
+    @PutMapping("/alterar/{id}")
+    public TitulosModel alteraTitulo(@PathVariable Long id, @RequestBody TitulosModel titulo){
+        return titulosService.atualizaTitulo(id,titulo);
     }
     @DeleteMapping("/deletar/{id}")
     public void deletaTitulo(@PathVariable Long id){

@@ -29,14 +29,15 @@ public class Controller {
     public TimesModel criarNovoTime(@RequestBody TimesModel time){
         return timeService.criarNovoTime(time);
     }
-    @PutMapping("/alterar")
-    public String alterarTimePorId(){
-        return "Time Alterado";
+    @PutMapping("/alterar/{id}")
+    public TimesModel alterarTimePorId(@PathVariable Long id, @RequestBody TimesModel times){
+        return timeService.atualizaTimes(id,times);
     }
     @DeleteMapping("/deletar/{id}")
     public void deletarTime(@PathVariable Long id){
         timeService.deletarTime(id);
     }
+
 
 
 

@@ -29,6 +29,13 @@ public class TitulosService {
     public void deletarTitulo(Long id){
          titulosRepository.deleteById(id);
     }
+    public TitulosModel atualizaTitulo(Long id, TitulosModel titulo){
+        if(titulosRepository.existsById(id)){
+            titulo.setId(id);
+            return titulosRepository.save(titulo);
+        }
+        return null;
+    }
 
 
 }
