@@ -1,6 +1,7 @@
 package com.devjava.demo.Times;
 
 import com.devjava.demo.Titulos.TitulosModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,6 +40,7 @@ public class TimesModel {
     private int capacidade;
 
     @OneToMany(mappedBy = "times")
+    @JsonIgnore
     private List<TitulosModel> titulos;
 
 

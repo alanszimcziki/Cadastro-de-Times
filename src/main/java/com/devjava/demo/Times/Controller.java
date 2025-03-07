@@ -25,12 +25,10 @@ public class Controller {
         return timeService.listarTimesPorId(id);
     }
 
-
-
     //todo:criar novo time
     @PostMapping("/criar")
-    public String criarNovoTime(){
-        return "Time Criado";
+    public TimesModel criarNovoTime(@RequestBody TimesModel time){
+        return timeService.criarNovoTime(time);
     }
     @PutMapping("/alterar")
     public String alterarTimePorId(){

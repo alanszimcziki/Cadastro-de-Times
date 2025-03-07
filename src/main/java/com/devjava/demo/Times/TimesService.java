@@ -21,5 +21,8 @@ public class TimesService {
         Optional<TimesModel> timeId = timesRepository.findById(id);
         return timeId.orElse(null);
     }
+    public TimesModel criarNovoTime(TimesModel times){
+        return timesRepository.save(times);
+    }
 
 }
