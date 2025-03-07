@@ -31,8 +31,8 @@ public class TitulosController {
     public String alteraTitulo(){
         return "Vai alterar um título";
     }
-    @DeleteMapping("/deletar")
-    public String deletaTitulo(){
-        return "Vai deletar um título";
+    @DeleteMapping("/deletar/{id}")
+    public void deletaTitulo(@PathVariable Long id){
+         titulosService.deletarTitulo(id);
     }
 }

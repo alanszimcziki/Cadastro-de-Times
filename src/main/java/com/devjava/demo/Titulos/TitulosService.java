@@ -26,6 +26,9 @@ public class TitulosService {
     public TitulosModel criarTitulo(TitulosModel titulos){
         return titulosRepository.save(titulos);
     }
+    public void deletarTitulo(Long id){
+         titulosRepository.deleteById(id);
+    }
 
 
 }
