@@ -26,7 +26,7 @@ public class Controller {
     }
     //todo:criar novo time
     @PostMapping("/criar")
-    public TimesModel criarNovoTime(@RequestBody TimesModel time){
+    public TimeDTO criarNovoTime(@RequestBody TimeDTO time){
         return timeService.criarNovoTime(time);
     }
     @PutMapping("/alterar/{id}")
