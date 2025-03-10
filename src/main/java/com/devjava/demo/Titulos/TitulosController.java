@@ -1,6 +1,9 @@
 package com.devjava.demo.Titulos;
 
 
+import com.devjava.demo.Times.TimeDTO;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,23 +19,49 @@ public class TitulosController {
     }
 
     @GetMapping("/listar")
-    public List<TituloDTO> listarTodosTitulos(){
-        return titulosService.listarTodosTitulos();
+    public  ResponseEntity<List<TituloDTO>> listarTodosTitulos() {
+        List<TituloDTO> titulo = titulosService.listarTodosTitulos();
+        return ResponseEntity.ok(titulo);
+
     }
+
     @GetMapping("/listar/{id}")
-    public TituloDTO listarPorId( @PathVariable Long id){
-        return titulosService.listarPorId(id);
+    public ResponseEntity<?> listarPorId(@PathVariable Long id) {
+        TituloDTO titulo = titulosService.listarPorId(id);
+        if(titulo != null){
+            return ResponseEntity.ok(titulo);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não foi possível encontrar esse título ");
+        }
     }
+
     @PostMapping("/criar")
-    public TituloDTO criarTitulo(@RequestBody TituloDTO titulo){
-        return titulosService.criarTitulo(titulo);
+    public ResponseEntity<String> criarTitulo(@RequestBody TituloDTO titulos) {
+        TituloDTO titulo = titulosService.criarTitulo(titulos);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Título Criado com Sucesso " + titulo.getNome());
     }
+
     @PutMapping("/alterar/{id}")
-    public TituloDTO alteraTitulo(@PathVariable Long id, @RequestBody TituloDTO titulo){
-        return titulosService.atualizaTitulo(id,titulo);
+    public ResponseEntity<?> alteraTitulo(@PathVariable Long id, @RequestBody TituloDTO titulos) {
+        TituloDTO procuraTitulo = titulosService.listarPorId(id);
+
+        if(procuraTitulo != null){
+            TituloDTO titulo = titulosService.atualizaTitulo(id, titulos);
+            return ResponseEntity.ok(titulo);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não foi possível atualizar esse título ");
+        }
+
     }
+
     @DeleteMapping("/deletar/{id}")
-    public void deletaTitulo(@PathVariable Long id){
-         titulosService.deletarTitulo(id);
+    public ResponseEntity<String> deletaTitulo(@PathVariable Long id) {
+        TituloDTO procuraTitulo = titulosService.listarPorId(id);
+        if ( procuraTitulo != null) {
+            titulosService.deletarTitulo(id);
+           return ResponseEntity.ok().body("Título Deletado com Sucesso !");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não foi posível encontrar o título");
+        }
     }
 }
