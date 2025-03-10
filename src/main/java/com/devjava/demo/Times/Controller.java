@@ -16,21 +16,21 @@ public class Controller {
 
     //TODO: -> CAMINHO DA ROTA
     @GetMapping("/todos")
-    public List<TimesModel> listarTodos(){
+    public List<TimeDTO> listarTodos(){
         return timeService.listarTodosTimes();
     }
     //todo: listar os times pelo id
     @GetMapping("/listar/{id}")
-    public TimesModel listarTimesPorId(@PathVariable Long id){
+    public TimeDTO listarTimesPorId(@PathVariable Long id){
         return timeService.listarTimesPorId(id);
     }
     //todo:criar novo time
     @PostMapping("/criar")
-    public TimesModel criarNovoTime(@RequestBody TimesModel time){
+    public TimeDTO criarNovoTime(@RequestBody TimeDTO time){
         return timeService.criarNovoTime(time);
     }
     @PutMapping("/alterar/{id}")
-    public TimesModel alterarTimePorId(@PathVariable Long id, @RequestBody TimesModel times){
+    public TimeDTO alterarTimePorId(@PathVariable Long id, @RequestBody TimeDTO times){
         return timeService.atualizaTimes(id,times);
     }
     @DeleteMapping("/deletar/{id}")

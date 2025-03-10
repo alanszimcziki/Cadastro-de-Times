@@ -16,19 +16,19 @@ public class TitulosController {
     }
 
     @GetMapping("/listar")
-    public List<TitulosModel> listarTodosTitulos(){
+    public List<TituloDTO> listarTodosTitulos(){
         return titulosService.listarTodosTitulos();
     }
     @GetMapping("/listar/{id}")
-    public TitulosModel listarPorId( @PathVariable Long id){
+    public TituloDTO listarPorId( @PathVariable Long id){
         return titulosService.listarPorId(id);
     }
     @PostMapping("/criar")
-    public TitulosModel criarTitulo(@RequestBody TitulosModel titulo){
+    public TituloDTO criarTitulo(@RequestBody TituloDTO titulo){
         return titulosService.criarTitulo(titulo);
     }
     @PutMapping("/alterar/{id}")
-    public TitulosModel alteraTitulo(@PathVariable Long id, @RequestBody TitulosModel titulo){
+    public TituloDTO alteraTitulo(@PathVariable Long id, @RequestBody TituloDTO titulo){
         return titulosService.atualizaTitulo(id,titulo);
     }
     @DeleteMapping("/deletar/{id}")
