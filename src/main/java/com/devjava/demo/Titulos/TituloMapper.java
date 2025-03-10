@@ -1,7 +1,9 @@
 package com.devjava.demo.Titulos;
 
-import com.devjava.demo.Times.TimesModel;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TituloMapper {
     public TitulosModel map(TituloDTO tituloDTO){
         TitulosModel titulosModel = new TitulosModel();
