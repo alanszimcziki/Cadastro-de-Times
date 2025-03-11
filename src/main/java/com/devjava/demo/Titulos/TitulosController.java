@@ -1,7 +1,6 @@
 package com.devjava.demo.Titulos;
 
 
-import com.devjava.demo.Times.TimeDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import java.util.List;
 @RequestMapping("titulos")
 public class TitulosController {
 
-    private TitulosService titulosService;
+    private final TitulosService titulosService;
 
     public TitulosController(TitulosService titulosService) {
         this.titulosService = titulosService;

@@ -4,14 +4,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Time;
 import java.util.List;
 
 @RestController
 @RequestMapping("times")
 public class TimeController {
 
-    private TimesService timeService;
+    private final TimesService timeService;
 
     public TimeController(TimesService timeService) {
         this.timeService = timeService;

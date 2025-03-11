@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class TimesService {
-    private TimesRepository timesRepository;
-    private TimeMapper timeMapper;
+    private final TimesRepository timesRepository;
+    private final TimeMapper timeMapper;
 
     public TimesService(TimesRepository timesRepository, TimeMapper timeMapper) {
         this.timesRepository = timesRepository;
